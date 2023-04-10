@@ -74,6 +74,11 @@
   "resolved" "http://172.18.66.66:31468/@types/json-schema/download/@types/json-schema-7.0.11.tgz"
   "version" "7.0.11"
 
+"@types/node@^18.15.11":
+  "integrity" "sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q=="
+  "resolved" "http://172.18.66.66:31468/@types/node/download/@types/node-18.15.11.tgz"
+  "version" "18.15.11"
+
 "@types/nprogress@^0.2.0":
   "integrity" "sha1-hsWTaC1BmSEqBQnMPE1WK7vW5F8="
   "resolved" "http://172.18.66.66:31468/@types/nprogress/download/@types/nprogress-0.2.0.tgz"
