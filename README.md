@@ -4,7 +4,7 @@
 
 参考[vite 官方文档教程](https://cn.vitejs.dev/guide/#scaffolding-your-first-vite-project)
 
-```
+```bash
 # npm 6.x
 npm create vite@latest my-vue-app --template vue
 
@@ -22,7 +22,7 @@ pnpm create vite my-vue-app -- --template vue
 
 cd 到 相应的目录文件夹
 
-```
+```bash
 # 进入项目文件夹
 cd 你自己命名的文件夹
 # 安装依赖
@@ -35,7 +35,7 @@ yarn dev
 
 解决方案：添加类型声明， 在shims-vue.d.ts`同级新增一个xx.d.ts文件（文件名随意，后缀一定是.d.ts） 加如以下配置
 
-```
+```js
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { Route } from 'vue-router'
@@ -60,9 +60,9 @@ declare module 'vue/types/vue' {
 
 [eslint官方文档](https://eslint.org/docs/user-guide/getting-started)
 
-[typeScript插件](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin)  
+[typeScript插件](https://github.com/typescript-eslint/typescript-eslint/tree/main/packages/eslint-plugin)
 
-```
+``` bash
 # eslint 安装
 yarn add eslint --dev
 
@@ -78,7 +78,7 @@ yarn add @typescript-eslint/parser --dev
 
  注意: 如果 `eslint` 安装报错:如下
 
-```
+``` bash
 error @eslint/eslintrc@1.2.2: The engine "node" is incompatible with this module. Expected version "^12.22.0 || ^14.17.0 || >=16.0.0". Got "14.15.3"
 error Found incompatible module.
 ```
@@ -87,17 +87,17 @@ error Found incompatible module.
 
 执行以下命令
 
-```
+```bash
 yarn config set ignore-engines true
-再执行安装eslint的命令 
-yarn add eslint --dev 
+再执行安装eslint的命令
+yarn add eslint --dev
 ```
 
 #### 项目下新建 .eslintrc.js
 
 更多配置规则见[官方文档](http://eslint.cn/docs/rules/)
 
-```
+```js
 module.exports = {
   root: true,
   env: {
@@ -275,14 +275,14 @@ yarn add prettier --dev
 
 #### 解决 eslint 和 prettier 冲突
 
- 解决 `ESLint` 中的样式规范和 `prettier` 中样式规范的`冲突`，以 `prettier` 的样式规范`为准`，使 ESLint 中的样式规范自动失效 
+ 解决 `ESLint` 中的样式规范和 `prettier` 中样式规范的`冲突`，以 `prettier` 的样式规范`为准`，使 ESLint 中的样式规范自动失效
 
 ```
 # 安装插件 eslint-config-prettier
 yarn add eslint-config-prettier --dev
 ```
 
-#### 项目下新建  .prettierrc.js 
+#### 项目下新建  .prettierrc.js
 
 Prettier 的配置文件可以用 4 种文件格式编写，随便喜欢哪一种，文件名不要写错就行
 
@@ -291,11 +291,11 @@ Prettier 的配置文件可以用 4 种文件格式编写，随便喜欢哪一�
 3. YAML `.prettierrc.yaml`或`.prettierrc.yml`
 4. TOML `.prettierrc.toml`
 
- 配置 `prettier` 格式化规则 
+ 配置 `prettier` 格式化规则
 
 更多配置详看[配置文档](https://prettier.io/docs/en/configuration.html)
 
-```
+```js
 module.exports = {
   tabWidth: 2,
   jsxSingleQuote: true,
@@ -319,7 +319,7 @@ module.exports = {
 
 #### 项目下新建 .prettierignore
 
-```
+```bash
 # 忽略格式化文件 (根据项目需要自行添加)
 node_modules
 dist
@@ -328,35 +328,35 @@ dist
 
 在.prettierrc.js文件中可能会出现以下警告，可以在 .prettierignore中添加 !.prettierignore
 
-```
+```bash
  warning  File ignored by default.  Use a negated ignore pattern (like "--ignore-pattern '!<relative/path/to/filename>'") to override
 
 ```
 
 #### package.json 文件的*scripts"*选项加入以下配置
 
-```
+```js
  "script": {
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "prettier --write ."
   }
 ```
 
- 上面配置完成后,可以运行以下`命令`测试下代码检查个`格式化`效果: 
+ 上面配置完成后,可以运行以下`命令`测试下代码检查个`格式化`效果:
 
-```
+``` bash
  # eslint 检查
- yarn lint 
- 
+ yarn lint
+
  # prettier 自动格式化
- yarn prettier 
+ yarn prettier
 ```
 
 ### 配置文件引入别名alias
 
 修改 `vite.config.ts` 文件配置,注意__dirname前面是两个下划线
 
-```
+``` bash
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
@@ -373,9 +373,9 @@ export default defineConfig({
 
 ```
 
- 修改 `tsconfig.json` 
+ 修改 `tsconfig.json`
 
-```
+```js
 {
   "compilerOptions": {
     "target": "esnext",
@@ -398,7 +398,7 @@ export default defineConfig({
 
 ### 配置 css 预处理器 scss
 
-```
+```bash
 yarn add dart-sass --dev
 yarn add sass --dev
 ```
@@ -409,7 +409,7 @@ yarn add sass --dev
 
 新建 `main.scss`, 设置一个用于测试的颜色`变量` :
 
-```
+``` bash
 $test-color: red;
 ```
 
@@ -417,7 +417,7 @@ $test-color: red;
 
 在vite.config.ts文件中加入css项
 
-```
+```js
 css:{
     preprocessorOptions:{
       scss:{
@@ -431,7 +431,7 @@ css:{
 
 写到这里我突然发现了一个我知道了很久确一直没有解决的问题，就是每次修改文件的时候可能忘了保存，当在其他页面保存了的时候会发现报错，有时候半天都不知道是哪里出问题，每次因为这个都要化很多宝贵的时间，很悲催的此时此刻我遇到了，开始解决。
 
-1、在vscode中搜索安装插件 [multi-command](https://marketplace.visualstudio.com/items?itemName=ryuta46.multi-command)  
+1、在vscode中搜索安装插件 [multi-command](https://marketplace.visualstudio.com/items?itemName=ryuta46.multi-command)
 
 2、在项目根目录下创建 `.vscode` 文件，当然你也可以在vscode的配置文件中直接配置，随你喜欢
 
@@ -454,13 +454,13 @@ css:{
 
 ### 配置路由
 
-```
+``` bash
 yarn add vue-router@4
 ```
 
  在 `src` 文件下新增router.ts文件,写入以下内容，如果路由比较多的话建议建一个文件夹
 
-```
+``` js
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
@@ -482,7 +482,7 @@ export default router
 
  修改入口文件 `mian.ts` ，全局引入router
 
-```
+``` js
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router/index'
@@ -499,7 +499,7 @@ createApp(App).mount('#app')
 
 [axios封装相关库](https://github.com/attojs/vue-request)
 
-```
+``` bash
 # 安装 axios
 yarn add axios
 # 安装 nprogress 用于请求 loading
@@ -511,7 +511,7 @@ yarn add @types/nprogress --dev
 
 新增service文件夹，service下新增http.ts文件以及api文件夹，其中http.ts用来axios封装
 
-```
+``` js
 //http.ts
 import axios, { AxiosRequestConfig } from 'axios'
 import NProgress from 'nprogress'
@@ -620,14 +620,14 @@ export default http
 
 [官方文档](https://pinia.vuejs.org/)
 
-```
+``` bash
 # 安装
 yarn add pinia@next
 ```
 
 main.ts 中增加
 
-```
+``` bash
 # 引入
 import { createPinia } from "pinia"
 # 创建根存储库并将其传递给应用程序
@@ -636,7 +636,7 @@ app.use(createPinia())
 
 创建store文件夹，在里面可以定义你需要的store,比如说保存用户信息的useeDataStore.ts
 
-```
+``` js
 import { defineStore } from 'pinia'
 
 export const userDataStore = defineStore('userData', {
@@ -646,10 +646,10 @@ export const userDataStore = defineStore('userData', {
   // could also be defined as
   // state: () => ({ count: 0 })
   actions: {
-    
+
   },
   getters: {
-    
+
   },
 })
 ```
