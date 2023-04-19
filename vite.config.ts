@@ -1,9 +1,20 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
-
+import { transformLazyShow } from 'v-lazy-show'
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [
+        vue({
+            template: {
+                compilerOptions: {
+                    nodeTransforms: [
+                        transformLazyShow, // <--- add this
+                    ],
+                },
+            },
+        }),
+    ],
+
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
