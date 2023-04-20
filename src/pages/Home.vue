@@ -6,12 +6,14 @@
 
         <button @click="handleClick(0)">clickMe1</button>
         <button @click="handleClick(1)">clickMe2</button>
+        <Icon icon="material-symbols:arrow-circle-right-outline" color="#489554" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Child } from './components'
+import { Icon } from '@iconify/vue'
 const props = defineProps({
     msg: String,
 })

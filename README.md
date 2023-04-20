@@ -660,3 +660,11 @@ export const userDataStore = defineStore('userData', {
 
 我在想要不要加这一部分，我感觉如果加的话是可以少些一些代码，也不用一点一点地找路径去导入，但是有一个不太好的地方就是在看代码找相应的变量的时候哪些变量是引入，哪些变量是当前文件定义的就会比较难区分，增加了代码阅读的阻碍，我比较想有的一个功能是在你只管写，而不用自己去写import语句，写了变量之后会给你自己写import，不知道有没有这个功能，等无聊了再看吧。。。。。
 
+## 引入vite打包可视化插件rollup-plugin-visualizer
+用法详见[rollup-plugin-visualizer ](https://www.npmjs.com/package/rollup-plugin-visualizer)
+
+## 引入图标库iconify
+用法详见[iconify/vue引用方法](https://docs.iconify.design/icon-components/vue/)，图标列表详见[图标列表](http://icon-sets.iconify.design/material-symbols/)
+
+
+

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import { transformLazyShow } from 'v-lazy-show'
+import { visualizer } from 'rollup-plugin-visualizer'
 export default defineConfig({
     plugins: [
         vue({
@@ -13,6 +14,7 @@ export default defineConfig({
                 },
             },
         }),
+        visualizer(),
     ],
 
     resolve: {
