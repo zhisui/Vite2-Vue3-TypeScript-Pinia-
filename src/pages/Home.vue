@@ -1,19 +1,16 @@
 <!-- 这个例子是使用v-lazy-show的，使用后发现它并不支持表达式，只支持boolean类型的值 -->
 <template>
-    <div>
+    <div class="list-item">
         <Child v-lazy-show="active" :msg="message1" />
         <Child v-lazy-show="active" :msg="message2" />
-
         <button @click="handleClick(0)">clickMe1</button>
         <button @click="handleClick(1)">clickMe2</button>
-        <Icon icon="material-symbols:arrow-circle-right-outline" color="#489554" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Child } from './components'
-import { Icon } from '@iconify/vue'
 const props = defineProps({
     msg: String,
 })
@@ -31,4 +28,30 @@ const handleClick = (type: number) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.list-item {
+    position: relative;
+    width: 20px;
+    .test {
+        color: red;
+        .second {
+            color: red;
+            .color {
+                color: gray;
+            }
+        }
+    }
+}
+
+.dec {
+    padding: 4px 0;
+    // width: 140px;
+    font-size: 14px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.active {
+    color: #00c2ff;
+}
+</style>

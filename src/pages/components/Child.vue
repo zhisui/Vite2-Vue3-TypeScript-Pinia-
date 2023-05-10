@@ -19,4 +19,8 @@ onMounted(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.hello {
+    color: #y234;
+}
+</style>

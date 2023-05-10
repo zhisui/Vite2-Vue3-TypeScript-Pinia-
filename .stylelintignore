@@ -1,0 +1,12 @@
+
+*.js
+*.jpg
+*.png
+*.eot
+*.ttf
+*.woff
+*.json
+*.min.css
+
+node_modules
+dist

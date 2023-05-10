@@ -1,8 +1,9 @@
 {
-  "multiCommand.commands": [
-    {
-      "command": "workbench.action.files.save",
-      "sequence": ["workbench.action.files.saveAll"]
-    }
-  ]
+    "multiCommand.commands": [
+        {
+            "command": "workbench.action.files.save",
+            "sequence": ["workbench.action.files.saveAll"]
+        }
+    ],
+    "vue.codeActions.enabled": false
 }
