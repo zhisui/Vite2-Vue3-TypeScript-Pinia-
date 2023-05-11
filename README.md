@@ -352,6 +352,129 @@ dist
  yarn prettier
 ```
 
+## 配置stylelint格式化css样式
+
+* 在vscode里面安装stylelint插件
+然后安装以下包
+```bash
+#这两个是基本要在安装的
+yarn add -D stylelint postcss-html
+
+# 这个是为了在vue文件中能支持css校验
+yarn add -D stylelint-config-recommended-vue
+
+# 这个是为了能检验scss
+yarn add -D stylelint-config-recommended-scss
+
+# 这个为了规范css书写的顺序
+yarn add -D stylelint-order
+```
+* 添加配置文件
+
+ 根目录下新建.stylelintrc.js文件,加入以下配置
+ ```js
+ module.exports = {
+    root: true,
+    extends: ['stylelint-config-recommended-vue/scss', ],
+    plugins: ['stylelint-order',],
+    rules: {
+        'string-quotes': 'single', // 单引号
+        'at-rule-empty-line-before': null,
+        'at-rule-no-unknown': null,
+        'at-rule-name-case': 'lower', // 指定@规则名的大小写
+        'length-zero-no-unit': true, // 禁止零长度的单位（可自动修复）
+        'shorthand-property-no-redundant-values': true, // 简写属性
+        'number-leading-zero': 'never', // 小数不带0
+        'declaration-block-no-duplicate-properties': true, // 禁止声明快重复属性
+        'no-descending-specificity': true, // 禁止在具有较高优先级的选择器后出现被其覆盖的较低优先级的选择器。
+        'selector-max-id': 0, // 限制一个选择器中 ID 选择器的数量
+        'max-nesting-depth': 3,
+        //'order/properties-order': [], // 设置css属性书写顺序，会覆盖stylelint-order
+        'order/properties-order': [
+            // 规则顺序
+            'position',
+            'top',
+            'right',
+            'bottom',
+            'left',
+            'z-index',
+            'display',
+            'float',
+            'width',
+            'height',
+            'max-width',
+            'max-height',
+            'min-width',
+            'min-height',
+            'padding',
+            'padding-top',
+            'padding-right',
+            'padding-bottom',
+            'padding-left',
+            'margin',
+            'margin-top',
+            'margin-right',
+            'margin-bottom',
+            'margin-left',
+            'margin-collapse',
+            'margin-top-collapse',
+            'margin-right-collapse',
+            'margin-bottom-collapse',
+            'margin-left-collapse',
+            'overflow',
+            'overflow-x',
+            'overflow-y',
+            'clip',
+            'clear',
+            'font',
+            'font-family',
+            'font-size',
+            'font-smoothing',
+            'osx-font-smoothing',
+            'font-style',
+            'font-weight',
+            'line-height',
+            'letter-spacing',
+            'word-spacing',
+            'color',
+            'text-align',
+            'text-decoration',
+            'text-indent',
+            'text-overflow',
+            'text-rendering',
+            'text-size-adjust',
+            'text-shadow',
+            'text-transform',
+            'word-break',
+            'word-wrap',
+            'white-space',
+            'vertical-align',
+            'list-style',
+            'list-style-type',
+            'list-style-position',
+            'list-style-image',
+            'pointer-events',
+            'cursor',
+            'background',
+            'background-color',
+            'border',
+            'border-radius',
+            'content',
+            'outline',
+            'outline-offset',
+            'opacity',
+            'filter',
+            'visibility',
+            'size',
+            'transform',
+        ],
+    },
+}
+
+ ```
+ 同时新建一个.stylelintignore文件，将不需要css检查的文件写进去，详见项目文件。
+
+
 ### 配置文件引入别名alias
 
 修改 `vite.config.ts` 文件配置,注意__dirname前面是两个下划线
