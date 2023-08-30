@@ -3,6 +3,7 @@ import NProgress from 'nprogress'
 
 //设置请求头和请求路径
 const baseURL = String(import.meta.env.VITE_APP_BASE)
+
 axios.defaults.baseURL = baseURL
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 //请求拦截
@@ -31,6 +32,7 @@ interface Http {
     post<T>(url: string, params?: unknown): Promise<ResType<T>>
     put<T>(url: string, params?: unknown): Promise<ResType<T>>
     upload<T>(url: string, params?: unknown): Promise<ResType<T>>
+    delete<T>(url: string, params?: unknown): Promise<ResType<T>>
     download<T>(url: string, params?: unknown): void
 }
 
@@ -41,9 +43,6 @@ const http: Http = {
             axios
                 .get(url, {
                     params,
-                    // headers: {
-                    //     Range: 'bytes=0-1200',
-                    // },
                 })
                 .then((res) => {
                     NProgress.done()
@@ -96,6 +95,24 @@ const http: Http = {
             axios
                 .put(url, params, {
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                })
+                .then((res) => {
+                    NProgress.done()
+                    resolve(res.data)
+                })
+                .catch((err) => {
+                    NProgress.done()
+                    reject(err.data)
+                })
+        })
+    },
+    delete(url, params) {
+        return new Promise((resolve, reject) => {
+            NProgress.start()
+            axios
+                .delete(url, {
+                    params,
+                    headers: { 'Content-Type': 'x-www-form-urlencoded' },
                 })
                 .then((res) => {
                     NProgress.done()
